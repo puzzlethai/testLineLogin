@@ -11,14 +11,15 @@
 function tryLogin(){
     const channel_ID = '1519057505';
     const channel_Secret =   '5997cf65a3c3789378fa99526d0f1b8c';
-    const callback_url = 'https://puzzlethai.github.io/testLineLogin/'
+    const callback_url = 'https://puzzlethai.github.io/testLineLogin/';
     var login_url ='https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id='
         +channel_ID+
-        '&redirect_uri='+callback_url+'&state=abc123'
+        '&redirect_uri='+callback_url+'&state=abc123';
 console.log('tryLogin');
     var xhttp = new XMLHttpRequest();
     xhttp.open("POST",login_url, true);
     xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhttp.send();
     var response = JSON.parse(xhttp.responseText);
     console.log(response);
