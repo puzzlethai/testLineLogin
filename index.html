@@ -15,15 +15,54 @@ function tryLogin(){
     var login_url ='https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id='
         +channel_ID+
         '&redirect_uri='+callback_url+'&state=abc123';
-console.log('tryLogin');
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("POST",login_url, true);
+console.log('Login line');
+/*    var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+    if (this.readyState === this.DONE) {
+        console.log(this.status) // do something; the request has completed
+    }
+}
+    xhttp.open("POST",login_url);
     xhttp.setRequestHeader("Content-type", "application/json");
-    xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhttp.send();
     var response = JSON.parse(xhttp.responseText);
-    console.log(response);
+    console.log(response);*/
+    function createCORSRequest(method, url) {
+        var xhr = new XMLHttpRequest();
+        if ("withCredentials" in xhr) {
 
+            // Check if the XMLHttpRequest object has a "withCredentials" property.
+            // "withCredentials" only exists on XMLHTTPRequest2 objects.
+            xhr.open(method, url, true);
+            console.log('in withCredentials');
+
+        } else  {
+
+            // Otherwise, CORS is not supported by the browser.
+            xhr = null;
+            console.log('CORS donot supported');
+        }
+        return xhr;
+    }
+
+    var xhr = createCORSRequest('POST', login_url);
+    if (!xhr) {
+        throw new Error('CORS not supported');
+    }
+    xhr.onload = function() {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+        // process the response.
+    };
+
+    xhr.onerror = function() {
+        var responseText = xhr.responseText;
+        console.log(responseText);
+//        console.log('There was an error!');
+    };
+    xhr.setRequestHeader("Origin", "https://puzzlethai.github.io");
+    xhr.setRequestHeader("Access-Control-Request-Method", "POST");
+    xhr.send();
 }
 </script>
 </html>
