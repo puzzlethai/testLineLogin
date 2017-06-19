@@ -5,7 +5,18 @@
     <title>ทดสอบ LINE API</title>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <?php function loginCallback(token,displayName,mid,pictureUrl,statusMessage){
+var _html = '';
+_html += '<img src="'+pictureUrl+'"><br>';
+    _html += 'Name : '+displayName+'<br>';
+    _html += 'statusMessage : '+statusMessage+'<br>';
+    _html += 'token : '+token+'<br>';
+    _html += 'mid : '+mid+'<br>';
 
+    $("#result").html(_html);
+    $("#login_div").hide();
+    }
+    ?>
     </head>
 <body>
 <p style="text-align: center">
@@ -17,18 +28,7 @@
 
 </p>
 
-<?php function loginCallback(token,displayName,mid,pictureUrl,statusMessage){
-var _html = '';
-_html += '<img src="'+pictureUrl+'"><br>';
-_html += 'Name : '+displayName+'<br>';
-_html += 'statusMessage : '+statusMessage+'<br>';
-_html += 'token : '+token+'<br>';
-_html += 'mid : '+mid+'<br>';
 
-$("#result").html(_html);
-$("#login_div").hide();
-}
-?>
 
 <script>
 
