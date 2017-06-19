@@ -1,12 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="ltr" lang="th" data-lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+    <title>ทดสอบ LINE API</title>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    </head>
+<body>
+<p style="text-align: center">
+<p id="result"></p>
+<div id="login_div">
+    <p>ทดสอบการ LOGIN</p>
+    <p><a onclick="loginLine()"><img src="btn_login_base.png" height="88" width="303"/></a></p>
+</div>
+
+</p>
+
+
+<script>
+
+//    <!--const channel_ID = '1519057505';-->
+//    <!--const channel_Secret =   '5997cf65a3c3789378fa99526d0f1b8c';-->
+//    <!--const callback_url = 'https://puzzlethai.github.io/testLineLogin/';-->
+
+    function trace( st ){
+        console.log(st);
+    }
+
+    function loginCallback(token,displayName,mid,pictureUrl,statusMessage){
+        var _html = '';
+        _html += '<img src="'+pictureUrl+'"><br>';
+        _html += 'Name : '+displayName+'<br>';
+        _html += 'statusMessage : '+statusMessage+'<br>';
+        _html += 'token : '+token+'<br>';
+        _html += 'mid : '+mid+'<br>';
+
+        $("#result").html(_html);
+        $("#login_div").hide();
+    }
+    function loginLine(){
+        var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1519057505&redirect_uri=https://puzzlethai.github.io/relay_line.php&state=reftest001",'Popup','height=500,width=480');
+        win.window.focus();
+    }
+</script>
+
+
+</body>
+</html>
+
+<!--
 <body>
 <button onclick ="tryLogin()">LOGIN line</button>
+
 </body>
+<div id="ozone" ></div>
 <script>
 function tryLogin(){
     const channel_ID = '1519057505';
@@ -14,7 +62,7 @@ function tryLogin(){
     const callback_url = 'https://puzzlethai.github.io/testLineLogin/';
     var login_url ='https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id='
         +channel_ID+
-        '&redirect_uri='+callback_url+'&state=abc123';
+        '&redirect_uri='+callback_url+'&state=afds456';
 console.log('Login line');
 /*    var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -52,17 +100,20 @@ console.log('Login line');
     xhr.onload = function() {
         var responseText = xhr.responseText;
         console.log(responseText);
+        var con = document.getElementById('ozone');
+        con.innerHTML=responseText;
         // process the response.
     };
 
     xhr.onerror = function() {
         var responseText = xhr.responseText;
-        console.log(responseText);
-//        console.log('There was an error!');
+
+        console.log('There was an error!');
     };
 //    xhr.setRequestHeader("Origin", "https://puzzlethai.github.io");
-//    xhr.setRequestHeader("Access-Control-Request-Method", "POST");
+//    xhr.setRequestHeader("Origin", "http://localhost:63342");
+//    xhr.setRequestHeader("Access-Control-Request-Method", "GET");
     xhr.send();
 }
 </script>
-</html>
+</html>-->
