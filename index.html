@@ -17,6 +17,18 @@
 
 </p>
 
+<?php function loginCallback(token,displayName,mid,pictureUrl,statusMessage){
+var _html = '';
+_html += '<img src="'+pictureUrl+'"><br>';
+_html += 'Name : '+displayName+'<br>';
+_html += 'statusMessage : '+statusMessage+'<br>';
+_html += 'token : '+token+'<br>';
+_html += 'mid : '+mid+'<br>';
+
+$("#result").html(_html);
+$("#login_div").hide();
+}
+?>
 
 <script>
 
@@ -28,22 +40,13 @@
         console.log(st);
     }
 
-    function loginCallback(token,displayName,mid,pictureUrl,statusMessage){
-        var _html = '';
-        _html += '<img src="'+pictureUrl+'"><br>';
-        _html += 'Name : '+displayName+'<br>';
-        _html += 'statusMessage : '+statusMessage+'<br>';
-        _html += 'token : '+token+'<br>';
-        _html += 'mid : '+mid+'<br>';
 
-        $("#result").html(_html);
-        $("#login_div").hide();
-    }
     function loginLine(){
         var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1519057505&redirect_uri=https://relayline.herokuapp.com/relay_line.php&state=ozone002",'Popup','height=500,width=480');
         win.window.focus();
     }
 </script>
+
 
 
 </body>
