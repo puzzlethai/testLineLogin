@@ -5,7 +5,7 @@
     <title>ทดสอบ LINE API</title>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
+    <script type="text/javascript" src="bower_components/jso/dist/jso.min.js"></script>
     </head>
 <body>
 <p style="text-align: center">
@@ -25,9 +25,9 @@
 //    <!--const channel_Secret =   '5997cf65a3c3789378fa99526d0f1b8c';-->
 //    <!--const callback_url = 'https://puzzlethai.github.io/testLineLogin/';-->
 
-    function trace( st ){
-        console.log(st);
-    }
+//    function trace( st ){
+//        console.log(st);
+//    }
 
 /*    function loginCallback(token,displayName,userId,pictureUrl,statusMessage){
         var _html = '';
@@ -40,19 +40,33 @@
         $("#result").html(_html);
         $("#login_div").hide();
     }*/
-function loginCallback(token){
-    var _html = '';
+//function loginCallback(token){
+//    var _html = '';
+//
+//    _html += 'token : '+token+'<br>';
+//
+//
+//    $("#result").html(_html);
+//    $("#login_div").hide();
+//}
 
-    _html += 'token : '+token+'<br>';
 
-
-    $("#result").html(_html);
-    $("#login_div").hide();
-}
     function loginLine(){
-        var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1519057505&redirect_uri=https://relayline.herokuapp.com/relay_line.php&state=ozone002",'Popup','height=500,width=480');
-        win.window.focus();
+//        var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1519057505&redirect_uri=https://relayline.herokuapp.com/relay_line.php&state=ozone002",'Popup','height=500,width=480');
+//        win.window.focus();
+        var jso = new JSO({
+            providerID: "line",
+            client_id: "1519057505",
+            redirect_uri: "",
+            authorization: "https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1519057505&redirect_uri=https://puzzlethai.github.io/testLineLogin/index.html&state=ozone002",
+            scopes: {
+                request: ["https://www.googleapis.com/auth/userinfo.profile"]
+            },
+            isDefault: true
+        });
+
     }
+
 </script>
 
 
