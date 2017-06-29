@@ -51,7 +51,9 @@
 //    $("#result").html(_html);
 //    $("#login_div").hide();
 //}
-
+function callAlert(text){
+    alert(text);
+}
 
     function loginLine(){
         var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1519057505&redirect_uri=https://relayline.herokuapp.com&state=ozone002",'Popup','height=500,width=480');
