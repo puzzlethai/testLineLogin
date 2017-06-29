@@ -12,8 +12,9 @@
 <p style="text-align: center">
 <p id="result"></p>
 <div id="login_div">
-    <p>ทดสอบการ LOGIN</p>
+    <p id ="ozone" >ทดสอบการ LOGIN</p>
     <p><a onclick="loginLine()"><img src="btn_login_base.png" height="88" width="303"/></a></p>
+    <p><a onclick="showName()"><img src="btn_login_base.png" height="88" width="303"/></a></p>
 </div>
 
 
@@ -29,9 +30,19 @@
 //    function trace( st ){
 //        console.log(st);
 //    }
+if(window.localStorage != null){
 
+    localStorage.setItem("displayName","guest");
+    alert("support local storage"+localStorage.getItem("displayName"));
+} else {
+    alert("not support")
+}
+
+function showName (){
+    alert(localStorage.getItem("displayName"));
+}
     function loginCallback(token,displayName,userId,pictureUrl,statusMessage){
-  console.log(displayName);
+
 /*        var _html = '';
         _html += '<img src="'+pictureUrl+'"><br>';
         _html += 'Name : '+displayName+'<br>';
@@ -42,18 +53,8 @@
         $("#result").html(_html);
         $("#login_div").hide();*/
     }
-//function loginCallback(token){
-//    var _html = '';
-//
-//    _html += 'token : '+token+'<br>';
-//
-//
-//    $("#result").html(_html);
-//    $("#login_div").hide();
-//}
-function callAlert(text){
-    alert(text);
-}
+
+
 
     function loginLine(){
         var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1519057505&redirect_uri=https://relayline.herokuapp.com&state=ozone002",'Popup','height=500,width=480');
