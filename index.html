@@ -13,6 +13,7 @@
 <p id="result"></p>
 <div id="login_div">
     <p id ="ozone" >ทดสอบการ LOGIN</p>
+    <input type="text" id="txtName" value="ozone" />
     <p><a onclick="loginLine()"><img src="btn_login_base.png" height="88" width="303"/></a></p>
     <p><a onclick="showName()"><img src="btn_login_base.png" height="88" width="303"/></a></p>
 </div>
@@ -39,7 +40,9 @@
 }*/
 
 function showName (){
-    alert(localStorage.getItem("displayName"));
+    //alert(localStorage.getItem("displayName"));
+    var temp = $("#txtName").value;
+    alert("text -->"+temp);
 }
     function loginCallback(token,displayName,userId,pictureUrl,statusMessage){
 
