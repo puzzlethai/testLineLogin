@@ -40,9 +40,11 @@
 }*/
 
 function showName (){
-    //alert(localStorage.getItem("displayName"));
-    var temp = $("#txtName").value;
-    alert("text -->"+temp);
+    alert(localStorage.getItem("displayName"));
+    //var temp = document.getElementById("txtName");
+    //temp.setAttribute("value","BEE");
+    //temp.value = "BEE";
+    //alert("text -->"+temp.value);
 }
     function loginCallback(token,displayName,userId,pictureUrl,statusMessage){
 
@@ -60,6 +62,7 @@ function showName (){
 
 
     function loginLine(){
+        localStorage.setItem("displayName","ozone");
         var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1519057505&redirect_uri=https://relayline.herokuapp.com&state=ozone002",'Popup','height=500,width=480');
         win.window.focus();
     }
