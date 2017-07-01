@@ -41,13 +41,13 @@ function receiveMessage(event)
     console.log(event.origin);
 console.log(event.data);
     // event.source is popup
-    var lineP = JSON.parse(event.data);
+    var {data:[{userId:userId,displayName:displayName,pictureUrl:pictureUrl,statusMessage:statusMessage}]} = event.data;
     var _html = '';
-    _html += '<img src="'+lineP.pictureUrl+'"><br>';
-    _html += 'Name : '+lineP.displayName+'<br>';
-    _html += 'statusMessage : '+lineP.statusMessage+'<br>';
+    _html += '<img src="'+pictureUrl+'"><br>';
+    _html += 'Name : '+displayName+'<br>';
+    _html += 'statusMessage : '+statusMessage+'<br>';
     // _html += 'token : '+token+'<br>';
-    _html += 'userId : '+lineP.userId+'<br>';
+    _html += 'userId : '+userId+'<br>';
 
     $("#result").html(_html);
     $("#login_div").hide();
