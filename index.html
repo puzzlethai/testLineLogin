@@ -62,10 +62,21 @@ function showName (){
 
 
     function loginLine(){
-        localStorage.setItem("displayName","ozone");
+        //localStorage.setItem("displayName","ozone");
         var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1519057505&redirect_uri=https://relayline.herokuapp.com&state=ozone002",'Popup','height=500,width=480');
         win.window.focus();
     }
+function receiveMessage(event)
+{
+    // Do we trust the sender of this message?  (might be
+    // different from what we originally opened, for example).
+    //if (event.origin !== "http://example.com")
+     //   return;
+console.log(event.data);
+    // event.source is popup
+    // event.data is "hi there yourself!  the secret response is: rheeeeet!"
+}
+window.addEventListener("message", receiveMessage, false);
 
 </script>
 
