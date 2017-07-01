@@ -41,7 +41,7 @@ function receiveMessage(event)
     console.log(event.origin);
 console.log(event.data);
     // event.source is popup
-    var {data:[{userId:userId,displayName:displayName,pictureUrl:pictureUrl,statusMessage:statusMessage}]} = event.data;
+    var {userId:userId,displayName:displayName,pictureUrl:pictureUrl,statusMessage:statusMessage} = event.data;
     var _html = '';
     _html += '<img src="'+pictureUrl+'"><br>';
     _html += 'Name : '+displayName+'<br>';
