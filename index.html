@@ -15,7 +15,7 @@
     <p id ="ozone" >ทดสอบการ LOGIN</p>
     <input type="text" id="txtName" value="ozone" />
     <p><a onclick="loginLine()"><img src="btn_login_base.png" height="88" width="303"/></a></p>
-    <p><a onclick="showName()"><img src="btn_login_base.png" height="88" width="303"/></a></p>
+
 </div>
 
 
@@ -28,41 +28,7 @@
 //    <!--const channel_Secret =   '5997cf65a3c3789378fa99526d0f1b8c';-->
 //    <!--const callback_url = 'https://puzzlethai.github.io/testLineLogin/';-->
 
-//    function trace( st ){
-//        console.log(st);
-//    }
-/*if(window.localStorage != null){
-
-    localStorage.setItem("displayName","guest");
-    alert("support local storage"+localStorage.getItem("displayName"));
-} else {
-    alert("not support")
-}*/
-
-function showName (){
-    alert(localStorage.getItem("displayName"));
-    //var temp = document.getElementById("txtName");
-    //temp.setAttribute("value","BEE");
-    //temp.value = "BEE";
-    //alert("text -->"+temp.value);
-}
-    function loginCallback(token,displayName,userId,pictureUrl,statusMessage){
-
-/*        var _html = '';
-        _html += '<img src="'+pictureUrl+'"><br>';
-        _html += 'Name : '+displayName+'<br>';
-        _html += 'statusMessage : '+statusMessage+'<br>';
-        _html += 'token : '+token+'<br>';
-        _html += 'userId : '+userId+'<br>';
-
-        $("#result").html(_html);
-        $("#login_div").hide();*/
-    }
-
-
-
     function loginLine(){
-        //localStorage.setItem("displayName","ozone");
         var win = window.open("https://access.line.me/dialog/oauth/weblogin?response_type=code&client_id=1519057505&redirect_uri=https://relayline.herokuapp.com&state=ozone002",'Popup','height=500,width=480');
         win.window.focus();
     }
@@ -75,7 +41,16 @@ function receiveMessage(event)
     console.log(event.origin);
 console.log(event.data);
     // event.source is popup
-    // event.data is "hi there yourself!  the secret response is: rheeeeet!"
+    var lineP = JSON.parse(event.data);
+    var _html = '';
+    _html += '<img src="'+lineP.pictureUrl+'"><br>';
+    _html += 'Name : '+displayName+'<br>';
+    _html += 'statusMessage : '+statusMessage+'<br>';
+    // _html += 'token : '+token+'<br>';
+    _html += 'mid : '+userId+'<br>';
+
+    $("#result").html(_html);
+    $("#login_div").hide();
 }
 window.addEventListener("message", receiveMessage, false);
 
