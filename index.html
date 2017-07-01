@@ -44,10 +44,10 @@ console.log(event.data);
     var lineP = JSON.parse(event.data);
     var _html = '';
     _html += '<img src="'+lineP.pictureUrl+'"><br>';
-    _html += 'Name : '+displayName+'<br>';
-    _html += 'statusMessage : '+statusMessage+'<br>';
+    _html += 'Name : '+lineP.displayName+'<br>';
+    _html += 'statusMessage : '+lineP.statusMessage+'<br>';
     // _html += 'token : '+token+'<br>';
-    _html += 'mid : '+userId+'<br>';
+    _html += 'userId : '+lineP.userId+'<br>';
 
     $("#result").html(_html);
     $("#login_div").hide();
